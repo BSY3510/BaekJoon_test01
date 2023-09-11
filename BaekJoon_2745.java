@@ -10,21 +10,17 @@ public class BaekJoon_2745 {
 		String s = sc.next();
 		int num = sc.nextInt();
 		long sum = 0;
+		int temp = 1;
 		
-		int len = s.length();
-		char[] l = new char[len];
-		
-		for (int i = 0; i < l.length; i++) {
-			l[i] = s.charAt(i);
-		}
-		
-		for (int i = l.length-1; i >= 0; i--) {
-			if ((int)l[i] >= 65) {
-				sum += ((int)l[i] - 55)*Math.pow(num, i);
+		for (int i = s.length()-1; i >= 0; i--) {
+			char c = s.charAt(i);
+			if (c >= 'A' && c <= 'Z') {
+				sum += (c-'A'+10) * temp;
 			}
 			else {
-				sum += (int)l[i]*Math.pow(num, i);
+				sum += (c-'0') * temp;
 			}
+			temp *= num;
 		}
 		
 		System.out.println(sum);
